@@ -41,6 +41,13 @@ func (listin *TclList) needsQuoting() bool {
 	return false
 }
 
+// Set assigns a new TclList using the given string
+func Set(liststring string) *TclList {
+	newList := TclList(liststring)
+	return &newList
+}
+
+// String() returns the encoded Tcl List
 func (listin *TclList) String() string {
 	return string(*listin)
 }
