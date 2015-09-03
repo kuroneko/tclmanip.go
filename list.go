@@ -62,7 +62,7 @@ func Join(listin []TclList) TclList {
 }
 
 
-// Set implements the Tcl lset method
+// Set implements the Tcl lset method and allows you to change(set) a specific item in the list.
 func (listin *TclList) Set(index int, sublist TclList) error {
 	parts := listin.Split()
 	if index >= len(parts) {
@@ -123,8 +123,10 @@ func (listin *TclList) Split() []TclList {
 	return rs
 }
 
-// Index implements the Tcl command lindex.  It returns nil if the index is out of range.
-func (listin *TclList) Index(index int) *TclList {
+// Index implements the Tcl command lindex.  
+//
+// It returns nil if the index is out of range.
+func (listin *TclList) Index(index int) (part *TclList) {
 	parts := listin.Split()
 	if (index >= len(parts)) {
 		return nil
